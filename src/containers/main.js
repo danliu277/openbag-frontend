@@ -1,17 +1,21 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux';
-import { loginActionCreater } from '../action/actionCreator'
-import { Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Navbar from '../components/navBar';
+import Login from '../components/login'
+import Inventory from '../components/inventory'
 
 function Main(props) {
-
     return (
         <div>
-            {!props.user && <Redirect to='/' />}
-            <Navbar />
+            {props.user ? <Navbar /> : <Redirect to="/" />}
+            <Switch>
+                <Route exact path="/" component={(routerProps) => <Login {...routerProps} />} />
+                <Route exact path="/inventory" component={(routerProps) => <Inventory {...routerProps} />} />
+                <Route render={() => <Redirect to="/" />} />
+            </Switch>
         </div>
-    )
+    );
 }
 
 const msp = state => {

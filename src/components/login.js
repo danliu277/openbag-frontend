@@ -27,7 +27,7 @@ function Login(props) {
                     Log In
                 </button>
             </form>
-            {props.user && <Redirect to='/main' />}
+            {props.user && <Redirect to='/inventory' />}
         </div>
     )
 }
