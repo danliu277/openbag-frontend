@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux';
-// import { loginActionCreater } from '../action/actionCreator'
+import { loginActionCreater } from '../action/actionCreator'
 import { Redirect } from 'react-router-dom';
 
 function Login(props) {
@@ -27,6 +27,7 @@ function Login(props) {
                     Log In
                 </button>
             </form>
+            {props.user && <Redirect to='/main' />}
         </div>
     )
 }
@@ -39,7 +40,7 @@ const msp = state => {
 
 const mdp = (dispatch) => {
     return {
-        // login: (username, password) => dispatch(loginActionCreater(username, password))
+        login: (username, password) => dispatch(loginActionCreater(username, password))
     }
 }
 
