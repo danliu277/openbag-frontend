@@ -12,8 +12,31 @@ function Inventory(props) {
         // }
     }, [props])
 
+
+    const warning = () => {
+        const audio = new Audio(process.env.PUBLIC_URL + '/warning.mp3')
+        const playPromise = audio.play();
+
+        if (playPromise !== undefined) {
+            playPromise
+                .then(_ => {
+                    console.log("audio played auto");
+                })
+                .catch(error => {
+                    console.log("playback prevented");
+                });
+        }
+    }
+
+    const check = () => {
+        const warn = props.games.find(game => game.stock < game.threshold)
+        if(warn)
+            warning()
+    }
+
     return (
         <div>
+            {check()}
             <h3>Inventory</h3>
             <table className="table">
                 <thead>
