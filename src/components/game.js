@@ -5,7 +5,7 @@ function Game(props) {
 
     return (
         <tr className={stock < threshold ? 'table-danger': undefined}>
-            <th scope="row">{stock < threshold && <i className="fa fa-warning" style="color:red"></i>}{id}</th>
+            <th scope="row">{stock < threshold && <i className="fa fa-warning" style={{color: "red"}}></i>}{id}</th>
             <td>{name}</td>
             <td>{genre}</td>
             <td>{sales_price}</td>
