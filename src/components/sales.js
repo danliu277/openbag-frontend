@@ -11,16 +11,22 @@ function Sales(props) {
         // props.signup({ username, password, email })
     }
 
+    const customerChange = (input) => {
+        setCustomer(input)
+        if(input)
+            props.searchCustomer(input)
+    }
+
     return (
         <div>
             <h3>Sales</h3>
             <form onSubmit={onSubmit}>
-                <div id="myDropdown" class="dropdown-content">
+                <div id="myDropdown" className="dropdown-content">
                     <input type="customer" placeholder="Customer"
                         name="customer"
                         value={customer}
-                        onChange={(e) => searchCustomer(e.target.value)} />
-                    {props.customers.map(customer => <Customer name={customer.name} />)}
+                        onChange={(e) => customerChange(e.target.value)} />
+                    {props.customers.map(customer => <Customer key={customer.id} customer={customer} />)}
                 </div>
                 <button variant="primary" type="submit">
                     Submit
