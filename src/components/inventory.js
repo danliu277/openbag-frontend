@@ -4,14 +4,11 @@ import { getGames, setGames } from '../action/actionCreator'
 import Game from './game';
 
 function Inventory(props) {
+    const { getGames } = props
+    
     useEffect(() => {
-        if (!props.games || props.games.length === 0)
-            props.getGames()
-        return () => {
-            if (props.games && props.games.length > 0)
-                props.resetGames()
-        }
-    }, [props])
+        getGames()
+    }, [getGames])
 
     return (
         <div>
@@ -29,8 +26,8 @@ function Inventory(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {props.games.map(game => { 
-                        return <Game key={game.id} game={game} /> 
+                    {props.games.map(game => {
+                        return <Game key={game.id} game={game} />
                     })}
                 </tbody>
             </table>
