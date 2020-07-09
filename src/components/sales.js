@@ -5,6 +5,7 @@ import Customer from './customer'
 
 function Sales(props) {
     const [customer, setCustomer] = useState('');
+    const [selectedCustomer, setSelectedCustomer] = useState(null)
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -13,8 +14,13 @@ function Sales(props) {
 
     const customerChange = (input) => {
         setCustomer(input)
-        if(input)
+        if (input)
             props.searchCustomer(input)
+    }
+
+    const selectCustomer = (customer) => {
+        setCustomer(`${customer.name}, ${customer.email}`)
+        setSelectedCustomer(customer.id)
     }
 
     return (
@@ -22,11 +28,14 @@ function Sales(props) {
             <h3>Sales</h3>
             <form onSubmit={onSubmit}>
                 <div id="myDropdown" className="dropdown-content">
-                    <input type="customer" placeholder="Customer"
+                    <label>
+                        Customer:
+                    </label>
+                    <input type="text" placeholder="Customer" className="customer-input"
                         name="customer"
                         value={customer}
                         onChange={(e) => customerChange(e.target.value)} />
-                    {props.customers.map(customer => <Customer key={customer.id} customer={customer} />)}
+                    {props.customers.map(customer => <Customer key={customer.id} customer={customer} selectCustomer={selectCustomer} />)}
                 </div>
                 <button variant="primary" type="submit">
                     Submit
@@ -38,7 +47,8 @@ function Sales(props) {
 
 const msp = state => {
     return {
-        customers: state.customers
+        customers: state.customers,
+        user: state.user,
     }
 }
 

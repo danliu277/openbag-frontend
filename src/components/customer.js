@@ -1,9 +1,14 @@
 import React from 'react';
 
 function Customer(props) {
-    const { name, email, id } = props.customer
+    const { name, email } = props.customer
+
+    const test = () => {
+        console.log('Selected')
+        props.selectCustomer(props.customer)
+    }
     return (
-        <a href="#about">{name}, {email}</a>
+        <a onClick={() => test()}>{name}, {email}</a>
     )
 }
 
