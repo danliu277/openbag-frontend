@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { connect } from 'react-redux';
 import { setCart } from '../action/actionCreator';
 
@@ -6,30 +6,25 @@ function Game(props) {
     const { id, name, genre, sales_price, vendor_cost, stock, threshold } = props.game;
     const [className, setClassName] = useState('')
 
-    useEffect(() => {
-        getClass()
-        console.log("cart: ", props.cart)
-    },[props.cart])
-
-    const inCart = () => {
+    const inCart = useCallback(() => {
         let inCart = false
-        if (props.cart.find(gameId => gameId === id))
+        if (props.cart.find(game => game.id === id))
             inCart = true
         return inCart
-    }
+    }, [id, props.cart])
 
-    const onClick = () => {
-        if (inCart())
-            props.setCart(props.cart.filter(gameId => gameId !== id))
-        else
-            props.setCart([...props.cart, id])
-    }
-
-    const getClass = () => {
+    useEffect(() => {
         if(inCart())
             setClassName("fa fa-minus")
         else
             setClassName("fa fa-plus")
+    },[props.cart, inCart])
+
+    const onClick = () => {
+        if (inCart())
+            props.setCart(props.cart.filter(game => game.id !== id))
+        else
+            props.setCart([...props.cart, props.game])
     }
 
     return (
