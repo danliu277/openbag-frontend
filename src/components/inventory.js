@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getGames, setGames } from '../action/actionCreator'
+import { getGames, setGames, setCart } from '../action/actionCreator'
 import Game from './game';
 
 function Inventory(props) {
@@ -25,10 +25,16 @@ function Inventory(props) {
                         <th scope="col">Sales Price</th>
                         <th scope="col">Vendor Cost</th>
                         <th scope="col">Stock</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {props.games.map(game => <Game key={game.id} game={game} />)}
+                    {props.games.map(game => { 
+                        let inCart = false
+                        if(props.cart.find(i => i.id === game.id))
+                            inCart = true
+                        return <Game key={game.id} game={game} inCart={inCart} /> 
+                    })}
                 </tbody>
             </table>
         </div>
@@ -38,14 +44,16 @@ function Inventory(props) {
 
 const msp = state => {
     return {
-        games: state.games
+        games: state.games,
+        cart: state.cart
     }
 }
 
 const mdp = (dispatch) => {
     return {
         getGames: () => dispatch(getGames()),
-        resetGames: () => dispatch(setGames([]))
+        resetGames: () => dispatch(setGames([])),
+        setCart: (cart) => dispatch(setCart(cart))
     }
 }
 

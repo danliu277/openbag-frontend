@@ -9,7 +9,7 @@ import Sales from '../components/sales'
 function Main(props) {
     return (
         <div>
-            {props.user ? <Navbar /> : <Redirect to="/" />}
+            {props.user && <Navbar />}
             <Switch>
                 <Route exact path="/" component={(routerProps) => <Login {...routerProps} />} />
                 <Route exact path="/inventory" component={(routerProps) => <Inventory {...routerProps} />} />

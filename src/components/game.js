@@ -11,6 +11,13 @@ function Game(props) {
             <td>{sales_price}</td>
             <td>{vendor_cost}</td>
             <td>{stock}</td>
+            <td>
+                {
+                    props.inCart ?
+                    <button><i class="fa fa-minus" aria-hidden="true"></i></button> :
+                    <button><i className="fa fa-plus" aria-hidden="true"></i></button>
+                }
+            </td>
         </tr>
     )
 }

@@ -8,7 +8,7 @@ function Customer(props) {
         props.selectCustomer(props.customer)
     }
     return (
-        <a onClick={() => test()}>{name}, {email}</a>
+        <p onClick={() => test()}>{name}, {email}</p>
     )
 }
 

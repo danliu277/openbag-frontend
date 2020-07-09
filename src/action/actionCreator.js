@@ -59,3 +59,5 @@ export const searchCustomer = (input) => {
             })
     }
 }
+
+export const setCart = cart => ({ type: 'SETCART', cart})
