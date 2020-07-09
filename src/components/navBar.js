@@ -2,8 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { setUserCreator } from '../action/actionCreator'
+import {withRouter} from 'react-router'
 
 function Navbar(props) {
+    const { location } = props
+
+    const checkPath = (path) => {
+        if(location && location.path === path)
+            return "nav-item active"
+        else 
+            return "nav-item"
+    }
+
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <Link className="navbar-brand" to="/main">Open Bag</Link>
@@ -13,15 +23,15 @@ function Navbar(props) {
 
             <div className="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
                 <ul className="navbar-nav mr-auto d-flex justify-content-end">
-                    <li className="nav-item active">
+                    <li className={checkPath('/inventory')}>
                         <Link className="nav-link" to="/inventory">Inventory</Link>
                     </li>
-                    {props.user ? <li className="nav-item">
+                    <li className={checkPath('/sales')}>
+                        <Link className="nav-link" to="/sales">Sales</Link>
+                    </li>
+                    <li className="nav-item">
                         <Link className="nav-link" to='#' onClick={props.logout}>Log Out</Link>
-                    </li> :
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/logIn">Log In</Link>
-                        </li>}
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -41,4 +51,4 @@ const mdp = (dispatch) => {
     }
 }
 
-export default connect(msp, mdp)(Navbar)
+export default connect(msp, mdp)(withRouter(Navbar))
