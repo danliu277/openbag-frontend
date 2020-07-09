@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { searchCustomer } from '../action/actionCreator'
+import { searchCustomer, setCustomers } from '../action/actionCreator'
 import Customer from './customer'
 
 function Sales(props) {
@@ -19,24 +19,31 @@ function Sales(props) {
     }
 
     const selectCustomer = (customer) => {
-        setCustomer(`${customer.name}, ${customer.email}`)
-        setSelectedCustomer(customer.id)
+        setCustomer('')
+        setSelectedCustomer(customer)
+        props.resetCustomers()
     }
 
     return (
         <div>
             <h3>Sales</h3>
             <form onSubmit={onSubmit}>
+                <h5>
+                    Search Customer
+                    </h5>
                 <div id="myDropdown" className="dropdown-content">
-                    <label>
-                        Customer:
-                    </label>
                     <input type="text" placeholder="Customer" className="customer-input"
                         name="customer"
                         value={customer}
                         onChange={(e) => customerChange(e.target.value)} />
                     {props.customers.map(customer => <Customer key={customer.id} customer={customer} selectCustomer={selectCustomer} />)}
                 </div>
+                <h5>
+                    Customer
+                </h5>
+                <p>
+                    {selectedCustomer && selectedCustomer.name} {selectedCustomer && selectedCustomer.email}
+                </p>
                 <div>
                     <h5>Game List</h5>
                     <div>
@@ -63,7 +70,8 @@ const msp = state => {
 
 const mdp = (dispatch) => {
     return {
-        searchCustomer: (input) => dispatch(searchCustomer(input))
+        searchCustomer: (input) => dispatch(searchCustomer(input)),
+        resetCustomers: () => dispatch(setCustomers([]))
     }
 }
 
