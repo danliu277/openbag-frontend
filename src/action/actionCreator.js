@@ -15,18 +15,41 @@ export const login = (username, password) => {
 }
 
 
+
+const warning = () => {
+    const audio = new Audio(process.env.PUBLIC_URL + '/warning.mp3')
+    const playPromise = audio.play();
+
+    if (playPromise !== undefined) {
+        playPromise
+            .then(_ => {
+                console.log("audio played auto");
+            })
+            .catch(error => {
+                console.log("playback prevented");
+            });
+    }
+}
+
+const check = (games) => {
+    const warn = games.find(game => game.stock < game.threshold)
+    if (warn)
+        warning()
+}
+
 export const setGames = games => ({ type: 'SETGAMES', games })
 export const getGames = () => {
     return dispatch => {
         fetch(`${API_ROOT}/games`)
             .then(res => res.json())
-            .then(plants => {
-                dispatch(setGames(plants))
+            .then(games => {
+                dispatch(setGames(games))
+                check(games)
             })
     }
 }
 
-export const setCustomers = customers => ({ type: 'SETCUSTOMERS', customers})
+export const setCustomers = customers => ({ type: 'SETCUSTOMERS', customers })
 export const searchCustomer = (input) => {
     return dispatch => {
         fetch(`${API_ROOT}/customers/search/${input}`)
