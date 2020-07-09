@@ -37,6 +37,14 @@ function Sales(props) {
                         onChange={(e) => customerChange(e.target.value)} />
                     {props.customers.map(customer => <Customer key={customer.id} customer={customer} selectCustomer={selectCustomer} />)}
                 </div>
+                <div>
+                    <h5>Game List</h5>
+                    <div>
+                        {
+                            props.cart.map(game => <p key={game.id}>{game.name}</p>)
+                        }
+                    </div>
+                </div>
                 <button variant="primary" type="submit">
                     Submit
                 </button>
@@ -49,6 +57,7 @@ const msp = state => {
     return {
         customers: state.customers,
         user: state.user,
+        cart: state.cart
     }
 }
 
