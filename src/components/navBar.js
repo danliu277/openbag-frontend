@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
-import { setUserCreator } from '../action/actionCreator'
+import { setUser } from '../action/actionCreator'
 import {withRouter} from 'react-router'
 
 function Navbar(props) {
@@ -47,7 +47,7 @@ const msp = state => {
 
 const mdp = (dispatch) => {
     return {
-        logout: () => dispatch(setUserCreator(null))
+        logout: () => dispatch(setUser(null))
     }
 }
 

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getGamesActionCreater, setGamesCreator } from '../action/actionCreator'
+import { getGames, setGames } from '../action/actionCreator'
 import Game from './game';
 
 function Inventory(props) {
@@ -66,8 +66,8 @@ const msp = state => {
 
 const mdp = (dispatch) => {
     return {
-        getGames: () => dispatch(getGamesActionCreater()),
-        resetGames: () => dispatch(setGamesCreator([]))
+        getGames: () => dispatch(getGames()),
+        resetGames: () => dispatch(setGames([]))
     }
 }
 

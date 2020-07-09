@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux';
-import { loginActionCreater } from '../action/actionCreator'
+import { login } from '../action/actionCreator'
 import { Redirect } from 'react-router-dom';
 
 function Login(props) {
@@ -40,7 +40,7 @@ const msp = state => {
 
 const mdp = (dispatch) => {
     return {
-        login: (username, password) => dispatch(loginActionCreater(username, password))
+        login: (username, password) => dispatch(login(username, password))
     }
 }
 
