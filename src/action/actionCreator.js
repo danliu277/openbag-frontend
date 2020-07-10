@@ -63,6 +63,15 @@ export const searchCustomer = (input) => {
 export const setCart = cart => ({ type: 'SETCART', cart})
 
 export const setSales = sales => ({ type: 'SETSALES', sales})
+export const getSales = () => {
+    return dispatch => {
+        fetch(`${API_ROOT}/sales`)
+            .then(res => res.json())
+            .then(sales => {
+                dispatch(setSales(sales))
+            })
+    }
+}
 
 export const createSales = sales => {
     return dispatch => {

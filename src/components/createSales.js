@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { searchCustomer, setCustomers, createSales } from '../action/actionCreator'
 import Customer from './customer'
 
-function Sales(props) {
+function CreateSales(props) {
     const [customer, setCustomer] = useState('');
     const [selectedCustomer, setSelectedCustomer] = useState(null)
 
@@ -81,4 +81,4 @@ const mdp = (dispatch) => {
     }
 }
 
-export default connect(msp, mdp)(Sales)
+export default connect(msp, mdp)(CreateSales)

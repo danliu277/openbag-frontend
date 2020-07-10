@@ -27,7 +27,10 @@ function Navbar(props) {
                         <Link className="nav-link" to="/inventory">Inventory</Link>
                     </li>
                     <li className={checkPath('/sales')}>
-                        <Link className="nav-link" to="/sales">Sales</Link>
+                        <Link className="nav-link" to="/sales">Create Sales</Link>
+                    </li>
+                    <li className={checkPath('/all-sales')}>
+                        <Link className="nav-link" to="/all-sales">All Sales</Link>
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link" to='#' onClick={props.logout}>Log Out</Link>

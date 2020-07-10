@@ -4,7 +4,8 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import Navbar from '../components/navBar';
 import Login from '../components/login'
 import Inventory from '../components/inventory'
-import Sales from '../components/sales'
+import CreateSales from '../components/createSales'
+import AllSales from '../components/allSales'
 
 function Main(props) {
     return (
@@ -13,7 +14,8 @@ function Main(props) {
             <Switch>
                 <Route exact path="/" component={(routerProps) => <Login {...routerProps} />} />
                 <Route exact path="/inventory" component={(routerProps) => <Inventory {...routerProps} />} />
-                <Route exact path="/sales" component={(routerProps) => <Sales {...routerProps} />} />
+                <Route exact path="/sales" component={(routerProps) => <CreateSales {...routerProps} />} />
+                <Route exact path="/all-sales" component={(routerProps) => <AllSales {...routerProps} />} />
                 <Route render={() => <Redirect to="/" />} />
             </Switch>
         </div>
