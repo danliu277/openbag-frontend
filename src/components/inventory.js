@@ -29,6 +29,7 @@ function Inventory(props) {
                     {props.games.map(game => {
                         return <Game key={game.id} game={game} />
                     })}
+                    
                 </tbody>
             </table>
         </div>

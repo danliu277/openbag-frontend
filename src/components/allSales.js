@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getSales } from '../action/actionCreator';
+import Sale from './sale';
 // import { setCart } from '../action/actionCreator';
 
 function AllSales(props) {
@@ -21,12 +22,27 @@ function AllSales(props) {
                         <th scope="col">Customer</th>
                         <th scope="col">Game</th>
                         <th scope="col">Quantity</th>
+                        <th scope="col">Individual Price</th>
+                        <th scope="col">Total Price</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {/* {props.games.map(game => {
-                        return <Game key={game.id} game={game} />
-                    })} */}
+                    {props.sales.map(sale => {
+                        return <Sale key={sale.id} sale={sale} />
+                    })}
+                    <tr>
+                        <th scope="row"></th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>${
+                            props.sales.reduce((accumulator,sale) => {
+                                return (sale.quantity * sale.game.sales_price) + accumulator
+                            }, 0)
+                        }</td>
+                    </tr>
                 </tbody>
             </table>
         </div>

@@ -16,7 +16,7 @@ const reducer = (prevState = initialState, action) => {
             return { ...prevState, customers: action.customers }
         case 'SETCART':
             return { ...prevState, cart: action.cart }
-        case 'SETCSALES':
+        case 'SETSALES':
             return { ...prevState, sales: action.sales }
         default:
             return prevState
