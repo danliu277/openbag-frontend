@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { searchCustomer, setCustomers } from '../action/actionCreator'
+import { searchCustomer, setCustomers, createSales } from '../action/actionCreator'
 import Customer from './customer'
 
 function Sales(props) {
@@ -9,7 +9,12 @@ function Sales(props) {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        // props.signup({ username, password, email })
+        let sales = {
+            employee_id: props.user && props.user.id,
+            customer_id: selectedCustomer && selectedCustomer.id,
+            games: props.cart
+        }
+        props.createSales(sales)
     }
 
     const customerChange = (input) => {
@@ -71,7 +76,8 @@ const msp = state => {
 const mdp = (dispatch) => {
     return {
         searchCustomer: (input) => dispatch(searchCustomer(input)),
-        resetCustomers: () => dispatch(setCustomers([]))
+        resetCustomers: () => dispatch(setCustomers([])),
+        createSales: (sales) => dispatch(createSales(sales))
     }
 }
 
