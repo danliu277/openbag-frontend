@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { searchCustomer, setCustomers, createSales } from '../action/actionCreator'
 import Customer from './customer'
+import GameSale from './gameSale';
 
 function CreateSales(props) {
     const [customer, setCustomer] = useState('');
@@ -52,9 +53,7 @@ function CreateSales(props) {
                 <div>
                     <h5>Game List</h5>
                     <div>
-                        {
-                            props.cart.map(game => <p key={game.id}>{game.name}</p>)
-                        }
+                        {props.cart.map(game => <GameSale key={game.id} game={game} />)}
                     </div>
                 </div>
                 <button variant="primary" type="submit">

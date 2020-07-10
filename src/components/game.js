@@ -24,7 +24,7 @@ function Game(props) {
         if (inCart())
             props.setCart(props.cart.filter(game => game.id !== id))
         else
-            props.setCart([...props.cart, props.game])
+            props.setCart([...props.cart, {...props.game, quantity: 1}])
     }
 
     return (

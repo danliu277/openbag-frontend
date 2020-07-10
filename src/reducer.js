@@ -14,6 +14,14 @@ const reducer = (prevState = initialState, action) => {
             return { ...prevState, games: action.games }
         case 'SETCUSTOMERS':
             return { ...prevState, customers: action.customers }
+        case 'UPDATECARTQUANTITY':
+            return {
+                ...prevState, cart: prevState.cart.map(game => {
+                    if (game.id === action.gameId)
+                        game.quantity = action.quantity
+                    return game
+                })
+            }
         case 'SETCART':
             return { ...prevState, cart: action.cart }
         case 'SETSALES':

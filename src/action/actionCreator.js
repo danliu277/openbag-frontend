@@ -61,6 +61,7 @@ export const searchCustomer = (input) => {
 }
 
 export const setCart = cart => ({ type: 'SETCART', cart})
+export const updateCartQuantity = (gameId, quantity) => ({ type: 'UPDATECARTQUANTITY', gameId, quantity})
 
 export const setSales = sales => ({ type: 'SETSALES', sales})
 export const getSales = () => {
