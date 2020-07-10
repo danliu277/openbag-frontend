@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { connect } from 'react-redux';
 import { setCart } from '../action/actionCreator';
 
-function Game(props) {
+const Game = (props) => {
     const { id, name, genre, sales_price, vendor_cost, stock, threshold } = props.game;
     const [className, setClassName] = useState('')
 

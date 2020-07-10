@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getGames, setGames } from '../action/actionCreator'
 import Game from '../components/game';
 
-function Inventory(props) {
+const Inventory = (props) => {
     const { getGames } = props
     
     useEffect(() => {

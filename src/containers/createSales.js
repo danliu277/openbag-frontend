@@ -4,7 +4,7 @@ import { searchCustomer, setCustomers, createSales } from '../action/actionCreat
 import Customer from '../components/customer'
 import GameSale from '../components/gameSale';
 
-function CreateSales(props) {
+const CreateSales = (props) => {
     const [customer, setCustomer] = useState('');
     const [selectedCustomer, setSelectedCustomer] = useState(null)
 

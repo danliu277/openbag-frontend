@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { updateCartQuantity } from '../action/actionCreator';
 
-function gameSale(props) {
+const gameSale = (props) => {
     const { id, name, quantity } = props.game;
 
     const onChange = (value) => {

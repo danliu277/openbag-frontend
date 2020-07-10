@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { setUser } from '../action/actionCreator'
 import {withRouter} from 'react-router'
 
-function Navbar(props) {
+const Navbar = (props) => {
     const { location } = props
 
     const checkPath = (path) => {

@@ -7,7 +7,7 @@ import Inventory from './inventory'
 import CreateSales from './createSales'
 import AllSales from './allSales'
 
-function Main(props) {
+const Main = (props) => {
     return (
         <div>
             {props.user ? <Navbar /> : <Redirect to="/" />}

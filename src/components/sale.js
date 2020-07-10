@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Sale(props) {
+const Sale = (props) => {
     const { id, employee, customer, game, quantity } = props.sale
 
     return (

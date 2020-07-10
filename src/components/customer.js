@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Customer(props) {
+const Customer =(props) => {
     const { name, email } = props.customer
 
     const test = () => {

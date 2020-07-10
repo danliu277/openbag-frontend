@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getSales } from '../action/actionCreator';
 import Sale from '../components/sale';
 
-function AllSales(props) {
+const  AllSales = (props) => {
     const { getSales } = props
 
     useEffect(() => {

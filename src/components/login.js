@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { login } from '../action/actionCreator'
 import { Redirect } from 'react-router-dom';
 
-function Login(props) {
+const Login = (props) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
