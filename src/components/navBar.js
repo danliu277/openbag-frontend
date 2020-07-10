@@ -32,6 +32,10 @@ const Navbar = (props) => {
                     <li className={checkPath('/all-sales')}>
                         <Link className="nav-link" to="/all-sales">All Sales</Link>
                     </li>
+
+                    <li className={checkPath('/trends')}>
+                        <Link className="nav-link" to="/trends">Trends</Link>
+                    </li>
                     <li className="nav-item">
                         <Link className="nav-link" to='#' onClick={props.logout}>Log Out</Link>
                     </li>
