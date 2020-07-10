@@ -79,6 +79,8 @@ export const createSales = sales => {
             method: 'POST',
             headers: HEADERS,
             body: JSON.stringify({ sales })
+        }).then(() => {
+            dispatch(setCart([]))
         })
     }
 }

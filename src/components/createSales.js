@@ -77,7 +77,7 @@ const mdp = (dispatch) => {
     return {
         searchCustomer: (input) => dispatch(searchCustomer(input)),
         resetCustomers: () => dispatch(setCustomers([])),
-        createSales: (sales) => dispatch(createSales(sales))
+        createSales: (sales) => dispatch(createSales(sales)),
     }
 }
 

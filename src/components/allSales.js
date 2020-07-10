@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getSales } from '../action/actionCreator';
 import Sale from './sale';
-// import { setCart } from '../action/actionCreator';
 
 function AllSales(props) {
     const { getSales } = props
@@ -57,7 +56,6 @@ const msp = state => {
 
 const mdp = (dispatch) => {
     return {
-        // setCart: (cart) => dispatch(setCart(cart))
         getSales: () => dispatch(getSales())
     }
 }
