@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { searchCustomer, setCustomers, createSales } from '../action/actionCreator'
-import Customer from './customer'
-import GameSale from './gameSale';
+import Customer from '../components/customer'
+import GameSale from '../components/gameSale';
 
 function CreateSales(props) {
     const [customer, setCustomer] = useState('');

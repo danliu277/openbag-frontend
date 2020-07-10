@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Navbar from '../components/navBar';
 import Login from '../components/login'
-import Inventory from '../components/inventory'
-import CreateSales from '../components/createSales'
-import AllSales from '../components/allSales'
+import Inventory from './inventory'
+import CreateSales from './createSales'
+import AllSales from './allSales'
 
 function Main(props) {
     return (

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getGames, setGames } from '../action/actionCreator'
-import Game from './game';
+import Game from '../components/game';
 
 function Inventory(props) {
     const { getGames } = props

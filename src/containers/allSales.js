@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getSales } from '../action/actionCreator';
-import Sale from './sale';
+import Sale from '../components/sale';
 
 function AllSales(props) {
     const { getSales } = props
