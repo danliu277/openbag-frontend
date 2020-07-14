@@ -52,5 +52,5 @@
 
 svg {
   background: #eee;
-  overflow: visible;
+  overflow: visible !important;
 }

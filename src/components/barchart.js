@@ -20,11 +20,11 @@ const BarChart = () => {
             .ticks(data.length)
             .tickFormat(index => index + 1)
 
-        const yAxis = axisRight(yScale)
+        const yAxis = axisLeft(yScale)
 
         svg
             .select(".x-axis")
-            // .style("transform", "translateY(150px)")
+            .style("transform", "translateY(150px)")
             .call(xAxis)
 
         svg
@@ -38,7 +38,7 @@ const BarChart = () => {
             .curve(curveCardinal)
 
         svg
-            .selectAll("path")
+            .selectAll(".line")
             .data([data])
             .join("path")
             .attr("d", value => myLine(value))
