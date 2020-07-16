@@ -49,8 +49,3 @@
 .game-quantity {
   width: 3rem;
 }
-
-svg {
-  background: #eee;
-  overflow: visible !important;
-}
