@@ -85,3 +85,14 @@ export const createSales = sales => {
         })
     }
 }
+
+export const setTopFive = games => ({ type: 'SETTOPFIVE', games})
+export const getTopFive = () => {
+    return dispatch => {
+        fetch(`${API_ROOT}/sales/top_five`)
+            .then(res => res.json())
+            .then(games => {
+                dispatch(setTopFive(games))
+            })
+    }
+}

@@ -3,7 +3,8 @@ let initialState = {
     games: [],
     customers: [],
     cart: [],
-    sales: []
+    sales: [],
+    topFive: [],
 }
 
 const reducer = (prevState = initialState, action) => {
@@ -26,6 +27,8 @@ const reducer = (prevState = initialState, action) => {
             return { ...prevState, cart: action.cart }
         case 'SETSALES':
             return { ...prevState, sales: action.sales }
+        case 'SETTOPFIVE':
+            return { ...prevState, topFive: action.games }
         default:
             return prevState
     }
