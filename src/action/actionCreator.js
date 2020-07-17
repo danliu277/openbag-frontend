@@ -105,3 +105,14 @@ export const getUnderstock = () => {
             })
     }
 }
+
+export const setAllVendors = allVendors => ({ type: 'SETALLVENDORS', allVendors})
+export const getAllVendors = () => {
+    return dispatch => {
+        fetch(`${API_ROOT}/vendors`)
+            .then(res => res.json())
+            .then(allVendors => {
+                dispatch(setAllVendors(allVendors))
+            })
+    }
+}

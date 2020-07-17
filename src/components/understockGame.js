@@ -4,8 +4,10 @@ import { setCart } from '../action/actionCreator';
 
 const UnderstockGame = (props) => {
     const { name, genre, vendor_cost, stock, threshold } = props.game;
+    const { allVendors } = props
 
     const [quantity, setQuantity] = useState(threshold - stock)
+    const [vendor, setVendor] = useState(allVendors[0])
 
     return (
         <tr>
@@ -20,13 +22,20 @@ const UnderstockGame = (props) => {
                     value={quantity}
                     onChange={(e) => setQuantity(e.target.value)} />
             </td>
+            <td>
+                <select value={vendor} onChange={(e) => setVendor(e.target.value)}>
+                    {allVendors.map(vendor => {
+                        return <option value={vendor}>{vendor.name}</option>
+                    })}
+                </select>
+            </td>
         </tr>
     )
 }
 
 const msp = state => {
     return {
-        cart: state.cart
+        allVendors: state.allVendors
     }
 }
 
