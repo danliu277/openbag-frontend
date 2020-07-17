@@ -14,8 +14,6 @@ export const login = (username, password) => {
     }
 }
 
-
-
 const warning = () => {
     const audio = new Audio(process.env.PUBLIC_URL + '/warning.mp3')
     const playPromise = audio.play();
@@ -93,6 +91,17 @@ export const getTopFive = () => {
             .then(res => res.json())
             .then(games => {
                 dispatch(setTopFive(games))
+            })
+    }
+}
+
+export const setUnderstock = understock => ({ type: 'SETUNDERSTOCK', understock})
+export const getUnderstock = () => {
+    return dispatch => {
+        fetch(`${API_ROOT}/games/understock`)
+            .then(res => res.json())
+            .then(understock => {
+                dispatch(setUnderstock(understock))
             })
     }
 }
