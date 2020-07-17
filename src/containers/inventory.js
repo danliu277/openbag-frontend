@@ -36,7 +36,6 @@ const Inventory = (props) => {
     )
 }
 
-
 const msp = state => {
     return {
         games: state.games
