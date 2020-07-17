@@ -24,7 +24,6 @@ const LineGraph = (props) => {
             shared: true
         },
         data: props.topFive.map(record => {
-            console.log('record: ', record.game.name)
             return {
                 type: 'spline',
                 name: record.game && record.game.name,
@@ -41,21 +40,6 @@ const LineGraph = (props) => {
 
     return (
         <div>
-            {
-                console.log(props.topFive.map(record => {
-                    return {
-                        type: 'spline',
-                        name: record.game && record.game.name,
-                        showInLegend: true,
-                        dataPoints: record.sales && record.sales.map(sale => {
-                            return {
-                                y: sale.sales,
-                                label: sale.date
-                            }
-                        })
-                    }
-                }))
-            }
             <CanvasJSChart options={options} />
         </div>
     )

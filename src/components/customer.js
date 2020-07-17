@@ -4,7 +4,6 @@ const Customer =(props) => {
     const { name, email } = props.customer
 
     const test = () => {
-        console.log('Selected')
         props.selectCustomer(props.customer)
     }
     return (
