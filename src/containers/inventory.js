@@ -4,11 +4,14 @@ import { getGames, setGames } from '../action/actionCreator'
 import Game from '../components/game';
 
 const Inventory = (props) => {
-    const { getGames } = props
+    const { getGames, resetGames } = props
     
     useEffect(() => {
         getGames()
-    }, [getGames])
+        return () => {
+            resetGames()
+        }
+    }, [getGames, resetGames])
 
     return (
         <div>
@@ -44,7 +47,7 @@ const msp = state => {
 
 const mdp = (dispatch) => {
     return {
-        getGames: () => dispatch(getGames()),
+        getGames: () => dispatch(getGames(true)),
         resetGames: () => dispatch(setGames([]))
     }
 }

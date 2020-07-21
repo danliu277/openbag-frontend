@@ -5,7 +5,8 @@ let initialState = {
     cart: [],
     sales: [],
     topFive: [],
-    allVendors: []
+    allVendors: [],
+    purchaseOrders: []
 }
 
 const reducer = (prevState = initialState, action) => {
@@ -32,6 +33,21 @@ const reducer = (prevState = initialState, action) => {
             return { ...prevState, topFive: action.games }
         case 'SETALLVENDORS':
             return { ...prevState, allVendors: action.allVendors }
+        case 'SETPURCHASEORDERS':
+            return { ...prevState, purchaseOrders: action.purchaseOrders }
+        case 'CREATEPURCHASEORDER':
+            console.log(prevState.purchaseOrders)
+            return {
+                ...prevState,
+                purchaseOrders: [
+                    ...prevState.purchaseOrders,
+                    {
+                        game_id: action.game_id,
+                        employee_id: prevState.user && prevState.user.id,
+                        quantity: action.quantity,
+                        vendor_id: action.vendor_id
+                    }]
+            }
         default:
             return prevState
     }

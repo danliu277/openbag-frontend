@@ -1,15 +1,19 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
-import { getAllVendors, getGames } from '../action/actionCreator'
+import { getAllVendors, getGames, setPurchaseOrders } from '../action/actionCreator'
 import StockGame from '../components/stockGame'
 
 const Restock = (props) => {
-    const { getAllVendors, games } = props
+    const { getAllVendors, games, getGames, resetPurchaseOrders } = props
+
 
     useEffect(() => {
         getAllVendors()
         getGames()
-    }, [getAllVendors])
+        return (() => {
+            resetPurchaseOrders()
+        })
+    }, [getAllVendors, getGames, resetPurchaseOrders])
 
     return (
         <div>
@@ -39,7 +43,7 @@ const Restock = (props) => {
 
 const msp = state => {
     return {
-        games: state.games
+        games: state.games,
     }
 }
 
@@ -47,6 +51,7 @@ const mdp = (dispatch) => {
     return {
         getAllVendors: () => dispatch(getAllVendors()),
         getGames: () => dispatch(getGames()),
+        resetPurchaseOrders: () => dispatch(setPurchaseOrders([])),
     }
 }
 

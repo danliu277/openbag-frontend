@@ -36,13 +36,14 @@ const check = (games) => {
 }
 
 export const setGames = games => ({ type: 'SETGAMES', games })
-export const getGames = () => {
+export const getGames = (warning = false) => {
     return dispatch => {
         fetch(`${API_ROOT}/games`)
             .then(res => res.json())
             .then(games => {
                 dispatch(setGames(games))
-                check(games)
+                if(warning)
+                    check(games)
             })
     }
 }
@@ -105,3 +106,6 @@ export const getAllVendors = () => {
             })
     }
 }
+
+export const setPurchaseOrders = purchaseOrders => ({ type: 'SETPURCHASEORDERS', purchaseOrders})
+export const createPurchaseOrder = (game_id, quantity, vendor_id) => ({ type: 'CREATEPURCHASEORDER', game_id,quantity, vendor_id})
