@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { setCart } from '../action/actionCreator';
 
@@ -6,7 +6,7 @@ const StockGame = (props) => {
     const { name, genre, vendor_cost, stock, threshold } = props.game;
     const { allVendors } = props
 
-    const [quantity, setQuantity] = useState(threshold - stock)
+    const [quantity, setQuantity] = useState(threshold - stock > 0 ? threshold - stock : 0)
     const [vendor, setVendor] = useState(allVendors[0])
 
     return (
@@ -25,6 +25,7 @@ const StockGame = (props) => {
             <td>
                 <select value={vendor} onChange={(e) => setVendor(e.target.value)}>
                     {allVendors.map(vendor => {
+                        console.log(vendor)
                         return <option value={vendor}>{vendor.name}</option>
                     })}
                 </select>
