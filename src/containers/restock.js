@@ -37,7 +37,7 @@ const Restock = (props) => {
                 </thead>
                 <tbody>
                     {games.map((game, index) => {
-                        return <StockGame key={index} game={game} index={index} />
+                        return <StockGame key={game.id} game={game} index={index} />
                     })}
                 </tbody>
             </table>

@@ -29,7 +29,7 @@ const StockGame = (props) => {
             <td>
                 <select value={vendor} onChange={(e) => setVendor(e.target.value)}>
                     {allVendors.map(vendor => {
-                        return <option value={vendor}>{vendor.name}</option>
+                        return <option key={vendor.id} value={vendor}>{vendor.name}</option>
                     })}
                 </select>
             </td>
