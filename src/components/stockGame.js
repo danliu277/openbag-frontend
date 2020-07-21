@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { setCart } from '../action/actionCreator';
+import { setCart, createPurchaseOrder } from '../action/actionCreator';
 
 const StockGame = (props) => {
-    const { name, genre, vendor_cost, stock, threshold } = props.game;
-    const { allVendors } = props
+    const { id, name, genre, vendor_cost, stock, threshold } = props.game;
+    const { allVendors, createPurchaseOrder } = props
 
     const [quantity, setQuantity] = useState(threshold - stock > 0 ? threshold - stock : 0)
     const [vendor, setVendor] = useState(allVendors[0])
+
+    useEffect(() => {
+        createPurchaseOrder(id, threshold - stock > 0 ? threshold - stock : 0, allVendors[0])
+    }, [createPurchaseOrder, id, stock, threshold, allVendors])
 
     return (
         <tr>
@@ -25,7 +29,6 @@ const StockGame = (props) => {
             <td>
                 <select value={vendor} onChange={(e) => setVendor(e.target.value)}>
                     {allVendors.map(vendor => {
-                        console.log(vendor)
                         return <option value={vendor}>{vendor.name}</option>
                     })}
                 </select>
@@ -36,13 +39,14 @@ const StockGame = (props) => {
 
 const msp = state => {
     return {
-        allVendors: state.allVendors
+        allVendors: state.allVendors,
     }
 }
 
 const mdp = (dispatch) => {
     return {
-        setCart: (cart) => dispatch(setCart(cart))
+        setCart: (cart) => dispatch(setCart(cart)),
+        createPurchaseOrder: (gameId, quantity, vendorId) => dispatch(createPurchaseOrder(gameId, quantity, vendorId))
     }
 }
 

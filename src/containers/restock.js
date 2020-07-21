@@ -1,19 +1,23 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
-import { getAllVendors, getGames, setPurchaseOrders } from '../action/actionCreator'
+import { getAllVendors, getGames, setPurchaseOrders, setGames } from '../action/actionCreator'
 import StockGame from '../components/stockGame'
 
 const Restock = (props) => {
-    const { getAllVendors, games, getGames, resetPurchaseOrders } = props
-
+    const { getAllVendors, games, getGames, resetPurchaseOrders, resetGames } = props
 
     useEffect(() => {
         getAllVendors()
         getGames()
         return (() => {
             resetPurchaseOrders()
+            resetGames()
         })
-    }, [getAllVendors, getGames, resetPurchaseOrders])
+    }, [getAllVendors, getGames, resetPurchaseOrders, resetGames])
+
+    const onClick = () => {
+        console.log(props.purchaseOrders)
+    }
 
     return (
         <div>
@@ -33,10 +37,11 @@ const Restock = (props) => {
                 </thead>
                 <tbody>
                     {games.map((game, index) => {
-                        return <StockGame key={game.id} game={game} index={index} />
+                        return <StockGame key={index} game={game} index={index} />
                     })}
                 </tbody>
             </table>
+            <button onClick={() => onClick()}>Restock</button>
         </div>
     )
 }
@@ -44,6 +49,7 @@ const Restock = (props) => {
 const msp = state => {
     return {
         games: state.games,
+        purchaseOrders: state.purchaseOrders
     }
 }
 
@@ -51,6 +57,7 @@ const mdp = (dispatch) => {
     return {
         getAllVendors: () => dispatch(getAllVendors()),
         getGames: () => dispatch(getGames()),
+        resetGames: () => dispatch(setGames([])),
         resetPurchaseOrders: () => dispatch(setPurchaseOrders([])),
     }
 }
