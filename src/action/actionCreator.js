@@ -95,17 +95,6 @@ export const getTopFive = () => {
     }
 }
 
-export const setUnderstock = understock => ({ type: 'SETUNDERSTOCK', understock})
-export const getUnderstock = () => {
-    return dispatch => {
-        fetch(`${API_ROOT}/games/understock`)
-            .then(res => res.json())
-            .then(understock => {
-                dispatch(setUnderstock(understock))
-            })
-    }
-}
-
 export const setAllVendors = allVendors => ({ type: 'SETALLVENDORS', allVendors})
 export const getAllVendors = () => {
     return dispatch => {

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { connect } from 'react-redux';
 import { setCart } from '../action/actionCreator';
 
-const UnderstockGame = (props) => {
+const StockGame = (props) => {
     const { name, genre, vendor_cost, stock, threshold } = props.game;
     const { allVendors } = props
 
@@ -45,4 +45,4 @@ const mdp = (dispatch) => {
     }
 }
 
-export default connect(msp, mdp)(UnderstockGame)
+export default connect(msp, mdp)(StockGame)

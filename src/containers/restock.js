@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
-import { getUnderstock, getAllVendors } from '../action/actionCreator'
-import UnderstockGame from '../components/understockGame'
+import { getAllVendors, getGames } from '../action/actionCreator'
+import StockGame from '../components/stockGame'
 
 const Restock = (props) => {
-    const { getUnderstock, getAllVendors } = props
+    const { getAllVendors, games } = props
 
     useEffect(() => {
-        getUnderstock()
         getAllVendors()
-    }, [getUnderstock, getAllVendors])
+        getGames()
+    }, [getAllVendors])
 
     return (
         <div>
@@ -28,8 +28,8 @@ const Restock = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {props.understock.map((game, index) => {
-                        return <UnderstockGame key={game.id} game={game} index={index} />
+                    {games.map((game, index) => {
+                        return <StockGame key={game.id} game={game} index={index} />
                     })}
                 </tbody>
             </table>
@@ -39,14 +39,14 @@ const Restock = (props) => {
 
 const msp = state => {
     return {
-        understock: state.understock
+        games: state.games
     }
 }
 
 const mdp = (dispatch) => {
     return {
-        getUnderstock: () => dispatch(getUnderstock()),
-        getAllVendors: () => dispatch(getAllVendors())
+        getAllVendors: () => dispatch(getAllVendors()),
+        getGames: () => dispatch(getGames()),
     }
 }
 

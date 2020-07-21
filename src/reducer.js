@@ -5,7 +5,6 @@ let initialState = {
     cart: [],
     sales: [],
     topFive: [],
-    understock: [],
     allVendors: []
 }
 
@@ -31,8 +30,6 @@ const reducer = (prevState = initialState, action) => {
             return { ...prevState, sales: action.sales }
         case 'SETTOPFIVE':
             return { ...prevState, topFive: action.games }
-        case 'SETUNDERSTOCK':
-            return { ...prevState, understock: action.understock }
         case 'SETVENDORS':
             return { ...prevState, allVendors: action.allVendors }
         default:
