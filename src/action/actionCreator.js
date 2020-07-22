@@ -110,3 +110,13 @@ export const getAllVendors = () => {
 export const setPurchaseOrders = purchaseOrders => ({ type: 'SETPURCHASEORDERS', purchaseOrders })
 export const createPurchaseOrder = (game_id, quantity, vendor_id) => ({ type: 'CREATEPURCHASEORDER', game_id, quantity, vendor_id })
 export const updatePurchaseOrder = (game_id, quantity, vendor_id) => ({ type: 'UPDATEPURCHASEORDER', game_id, quantity, vendor_id })
+export const submitPurchaseOrders = (purchaseOrders) => {
+    return dispatch => {
+        fetch(`${API_ROOT}/purchase_orders`, {
+            method: 'POST',
+            headers: HEADERS,
+            body: JSON.stringify({ purchaseOrders })
+        }).then(() => {
+        })
+    }
+}
