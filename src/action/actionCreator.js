@@ -109,3 +109,4 @@ export const getAllVendors = () => {
 
 export const setPurchaseOrders = purchaseOrders => ({ type: 'SETPURCHASEORDERS', purchaseOrders})
 export const createPurchaseOrder = (game_id, quantity, vendor_id) => ({ type: 'CREATEPURCHASEORDER', game_id,quantity, vendor_id})
+export const updatePurchaseOrder = (game_id, quantity, vendor_id) => ({ type: 'UPDATEPURCHASEORDER', game_id,quantity, vendor_id})

@@ -51,6 +51,14 @@ const reducer = (prevState = initialState, action) => {
                         }]
                 }
             }
+        case 'UPDATEPURCHASEORDER':
+            let purchaseOrders = prevState.purchaseOrders
+            let index = purchaseOrders.findIndex(x => x.game_id === action.game_id)
+            if(index >= 0) {
+                purchaseOrders[index].quantity = action.quantity
+                purchaseOrders[index].vendor_id = action.vendor_id
+            }
+            return { ...prevState, purchaseOrders }
         default:
             return prevState
     }
