@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
-import { getAllVendors, getGames, setPurchaseOrders, setGames } from '../action/actionCreator'
+import { getAllVendors, getGames, setPurchaseOrders, setGames, submitPurchaseOrders } from '../action/actionCreator'
 import StockGame from '../components/stockGame'
 
 const Restock = (props) => {
-    const { getAllVendors, games, getGames, resetPurchaseOrders, resetGames } = props
+    const { getAllVendors, games, purchaseOrders, getGames, resetPurchaseOrders, resetGames, submitPurchaseOrders } = props
 
     useEffect(() => {
         getAllVendors()
@@ -16,7 +16,9 @@ const Restock = (props) => {
     }, [getAllVendors, getGames, resetPurchaseOrders, resetGames])
 
     const onClick = () => {
-        console.log(props.purchaseOrders)
+        submitPurchaseOrders(
+            purchaseOrders.filter(purchaseOrder => purchaseOrder.quantity > 0)
+        )
     }
 
     return (
@@ -59,6 +61,7 @@ const mdp = (dispatch) => {
         getGames: () => dispatch(getGames()),
         resetGames: () => dispatch(setGames([])),
         resetPurchaseOrders: () => dispatch(setPurchaseOrders([])),
+        submitPurchaseOrders: (purchaseOrders) => dispatch(submitPurchaseOrders(purchaseOrders)),
     }
 }
 

@@ -1,4 +1,4 @@
-export const API_ROOT = 'http://localhost:3000';
+export const API_ROOT = 'https://openbag-backend.herokuapp.com';
 
 export const HEADERS = {
     'Content-Type': 'application/json',
