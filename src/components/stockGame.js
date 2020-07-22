@@ -7,7 +7,7 @@ const StockGame = (props) => {
     const { allVendors, createPurchaseOrder, updatePurchaseOrder } = props
 
     const [quantity, setQuantity] = useState(threshold - stock > 0 ? threshold - stock : 0)
-    const [vendor, setVendor] = useState(allVendors[0])
+    const [vendor, setVendor] = useState(allVendors[0] && allVendors[0].id)
 
     useEffect(() => {
         createPurchaseOrder(id, threshold - stock > 0 ? threshold - stock : 0, allVendors[0])
@@ -17,7 +17,7 @@ const StockGame = (props) => {
         if(type === 'quantity')
             setQuantity(parseInt(value))
         else if(type === 'vendor')
-            setVendor(value)
+            setVendor(parseInt(value))
         updatePurchaseOrder(id, quantity, vendor)
     }
 
@@ -37,7 +37,7 @@ const StockGame = (props) => {
             <td>
                 <select value={vendor} onChange={(e) => valueChange('vendor', e.target.value)}>
                     {allVendors.map(vendor => {
-                        return <option key={vendor.id} value={vendor}>{vendor.name}</option>
+                        return <option key={vendor.id} value={vendor.id}>{vendor.name}</option>
                     })}
                 </select>
             </td>
