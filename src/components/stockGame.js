@@ -14,11 +14,14 @@ const StockGame = (props) => {
     }, [createPurchaseOrder, id, stock, threshold, allVendors])
 
     const valueChange = (type, value) => {
-        if(type === 'quantity')
+        if (type === 'quantity') {
             setQuantity(parseInt(value))
-        else if(type === 'vendor')
+            updatePurchaseOrder(id, parseInt(value), vendor)
+        }
+        else if (type === 'vendor') {
             setVendor(parseInt(value))
-        updatePurchaseOrder(id, quantity, vendor)
+            updatePurchaseOrder(id, quantity, parseInt(value))
+        }
     }
 
     return (

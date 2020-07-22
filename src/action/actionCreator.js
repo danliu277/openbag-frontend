@@ -42,7 +42,7 @@ export const getGames = (warning = false) => {
             .then(res => res.json())
             .then(games => {
                 dispatch(setGames(games))
-                if(warning)
+                if (warning)
                     check(games)
             })
     }
@@ -59,10 +59,10 @@ export const searchCustomer = (input) => {
     }
 }
 
-export const setCart = cart => ({ type: 'SETCART', cart})
-export const updateCartQuantity = (gameId, quantity) => ({ type: 'UPDATECARTQUANTITY', gameId, quantity})
+export const setCart = cart => ({ type: 'SETCART', cart })
+export const updateCartQuantity = (gameId, quantity) => ({ type: 'UPDATECARTQUANTITY', gameId, quantity })
 
-export const setSales = sales => ({ type: 'SETSALES', sales})
+export const setSales = sales => ({ type: 'SETSALES', sales })
 export const getSales = () => {
     return dispatch => {
         fetch(`${API_ROOT}/sales`)
@@ -85,7 +85,7 @@ export const createSales = sales => {
     }
 }
 
-export const setTopFive = games => ({ type: 'SETTOPFIVE', games})
+export const setTopFive = games => ({ type: 'SETTOPFIVE', games })
 export const getTopFive = () => {
     return dispatch => {
         fetch(`${API_ROOT}/sales/top_five`)
@@ -96,7 +96,7 @@ export const getTopFive = () => {
     }
 }
 
-export const setAllVendors = allVendors => ({ type: 'SETALLVENDORS', allVendors})
+export const setAllVendors = allVendors => ({ type: 'SETALLVENDORS', allVendors })
 export const getAllVendors = () => {
     return dispatch => {
         fetch(`${API_ROOT}/vendors`)
@@ -107,6 +107,6 @@ export const getAllVendors = () => {
     }
 }
 
-export const setPurchaseOrders = purchaseOrders => ({ type: 'SETPURCHASEORDERS', purchaseOrders})
-export const createPurchaseOrder = (game_id, quantity, vendor_id) => ({ type: 'CREATEPURCHASEORDER', game_id,quantity, vendor_id})
-export const updatePurchaseOrder = (game_id, quantity, vendor_id) => ({ type: 'UPDATEPURCHASEORDER', game_id,quantity, vendor_id})
+export const setPurchaseOrders = purchaseOrders => ({ type: 'SETPURCHASEORDERS', purchaseOrders })
+export const createPurchaseOrder = (game_id, quantity, vendor_id) => ({ type: 'CREATEPURCHASEORDER', game_id, quantity, vendor_id })
+export const updatePurchaseOrder = (game_id, quantity, vendor_id) => ({ type: 'UPDATEPURCHASEORDER', game_id, quantity, vendor_id })
