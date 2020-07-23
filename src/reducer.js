@@ -36,7 +36,7 @@ const reducer = (prevState = initialState, action) => {
         case 'SETPURCHASEORDERS':
             return { ...prevState, purchaseOrders: action.purchaseOrders }
         case 'CREATEPURCHASEORDER':
-            if (prevState.purchaseOrders.find(purchaseOrder => purchaseOrder.game_id === action.game_id))
+            if (action.vendor_id && prevState.purchaseOrders.find(purchaseOrder => purchaseOrder.game_id === action.game_id))
                 return { ...prevState }
             else {
                 return {

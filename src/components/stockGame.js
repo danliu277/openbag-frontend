@@ -10,7 +10,11 @@ const StockGame = (props) => {
     const [vendor, setVendor] = useState(allVendors[0] && allVendors[0].id)
 
     useEffect(() => {
-        createPurchaseOrder(id, threshold - stock > 0 ? threshold - stock : 0, allVendors[0])
+        createPurchaseOrder(
+            id,
+            threshold - stock > 0 ? threshold - stock : 0,
+            allVendors[0] && allVendors[0].id
+        )
     }, [createPurchaseOrder, id, stock, threshold, allVendors])
 
     const valueChange = (type, value) => {
