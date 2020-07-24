@@ -116,7 +116,19 @@ export const submitPurchaseOrders = (purchaseOrders) => {
             method: 'POST',
             headers: HEADERS,
             body: JSON.stringify({ purchaseOrders })
-        }).then(() => {
+        }).then(res => {
+            if(res.status === 200)
+                dispatch(setPurchaseOrdersSubmitted('success'))
+            else
+                dispatch(setPurchaseOrdersSubmitted('error'))
+            return res.json()
+        })
+        .then(purchaseOrders => {
+            purchaseOrders.forEach(po => {
+                dispatch(updatePurchaseOrder(po.game_id, 0, po.vendor_id))
+            })
         })
     }
 }
+
+export const setPurchaseOrdersSubmitted = (purchaseOrdersSubmitted) => ({ type: 'SETPURCHASEORDERSSUBMITTED', purchaseOrdersSubmitted})

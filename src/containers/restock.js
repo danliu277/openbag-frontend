@@ -1,21 +1,35 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
-import { getAllVendors, getGames, setPurchaseOrders, setGames, submitPurchaseOrders } from '../action/actionCreator'
+import { getAllVendors, getGames, setPurchaseOrders, setGames, submitPurchaseOrders, setPurchaseOrdersSubmitted } from '../action/actionCreator'
 import StockGame from '../components/stockGame'
 
 const Restock = (props) => {
-    const { getAllVendors, games, purchaseOrders, getGames, resetPurchaseOrders, resetGames, submitPurchaseOrders } = props
+    const {
+        getAllVendors,
+        games,
+        purchaseOrders,
+        getGames,
+        resetPurchaseOrders,
+        resetGames,
+        submitPurchaseOrders,
+        purchaseOrdersSubmitted,
+        setPurchaseOrdersSubmitted } = props
 
     useEffect(() => {
         getAllVendors()
         getGames()
+        if (purchaseOrdersSubmitted) {
+            console.log(purchaseOrdersSubmitted)
+            setPurchaseOrdersSubmitted('')
+        }
         return (() => {
             resetPurchaseOrders()
             resetGames()
         })
-    }, [getAllVendors, getGames, resetPurchaseOrders, resetGames])
+    }, [getAllVendors, getGames, resetPurchaseOrders, resetGames, purchaseOrdersSubmitted, setPurchaseOrdersSubmitted])
 
     const onClick = () => {
+        console.log(purchaseOrders)
         submitPurchaseOrders(
             purchaseOrders.filter(purchaseOrder => purchaseOrder.quantity > 0)
         )
@@ -51,7 +65,8 @@ const Restock = (props) => {
 const msp = state => {
     return {
         games: state.games,
-        purchaseOrders: state.purchaseOrders
+        purchaseOrders: state.purchaseOrders,
+        purchaseOrdersSubmitted: state.purchaseOrdersSubmitted
     }
 }
 
@@ -62,6 +77,7 @@ const mdp = (dispatch) => {
         resetGames: () => dispatch(setGames([])),
         resetPurchaseOrders: () => dispatch(setPurchaseOrders([])),
         submitPurchaseOrders: (purchaseOrders) => dispatch(submitPurchaseOrders(purchaseOrders)),
+        setPurchaseOrdersSubmitted: (value) => dispatch(setPurchaseOrdersSubmitted(value)),
     }
 }
 

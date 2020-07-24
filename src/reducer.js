@@ -6,7 +6,8 @@ let initialState = {
     sales: [],
     topFive: [],
     allVendors: [],
-    purchaseOrders: []
+    purchaseOrders: [],
+    purchaseOrdersSubmitted: ''
 }
 
 const reducer = (prevState = initialState, action) => {
@@ -61,6 +62,8 @@ const reducer = (prevState = initialState, action) => {
                     return purchaseOrder
                 })
             }
+        case 'SETPURCHASEORDERSSUBMITTED':
+            return { ...prevState, purchaseOrdersSubmitted: action.purchaseOrdersSubmitted }
         default:
             return prevState
     }
