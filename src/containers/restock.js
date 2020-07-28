@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
 import { getAllVendors, getGames, setPurchaseOrders, setGames, submitPurchaseOrders, setPurchaseOrdersSubmitted } from '../action/actionCreator'
 import StockGame from '../components/stockGame'
@@ -16,14 +16,9 @@ const Restock = (props) => {
         purchaseOrdersSubmitted,
         setPurchaseOrdersSubmitted, } = props
 
-    const [showAlert, setShowAlert] = useState(false)
-
     useEffect(() => {
         getAllVendors()
         getGames()
-        if(setPurchaseOrders) {
-            setShowAlert(true)
-        }
         return (() => {
             resetPurchaseOrders()
             resetGames()
@@ -52,7 +47,6 @@ const Restock = (props) => {
         }
         return (
             <Alert variant={variant} onClose={() => {
-                setShowAlert(false)
                 setPurchaseOrdersSubmitted('')
             }} dismissible>
                 <Alert.Heading>{message}</Alert.Heading>
@@ -82,7 +76,7 @@ const Restock = (props) => {
                     })}
                 </tbody>
             </table>
-            {showAlert && displayAlert()}
+            {setPurchaseOrdersSubmitted && displayAlert()}
             <button onClick={() => onClick()}>Restock</button>
         </div>
     )

@@ -118,12 +118,16 @@ export const submitPurchaseOrders = (purchaseOrders) => {
             headers: HEADERS,
             body: JSON.stringify({ purchaseOrders })
         }).then(res => {
-            if(res.status === 200)
+            if(res.status === 200){
                 dispatch(setPurchaseOrdersSubmitted('success'))
-            else
+                dispatch(setPurchaseOrders([]))
+                dispatch(getGames())
+                return res.json()
+            }
+            else{
                 dispatch(setPurchaseOrdersSubmitted('error'))
-            dispatch(getGames())
-            return res.json()
+                return []
+            }
         })
         .then(purchaseOrders => {
             purchaseOrders.forEach(po => {
