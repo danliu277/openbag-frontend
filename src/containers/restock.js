@@ -34,6 +34,7 @@ const Restock = (props) => {
         submitPurchaseOrders(
             purchaseOrders.filter(purchaseOrder => purchaseOrder.quantity > 0)
         )
+        setPurchaseOrdersSubmitted('loading')
     }
 
     const displayAlert = () => {
@@ -45,6 +46,9 @@ const Restock = (props) => {
         } else if (purchaseOrdersSubmitted === 'error') {
             variant = 'danger'
             message = 'Error Submitting Purchase Order'
+        } else if (purchaseOrdersSubmitted === 'loading') {
+            variant = 'warning'
+            message = 'Submitting Purchase Order'
         }
         return (
             <Alert variant={variant} onClose={() => {

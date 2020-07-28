@@ -121,6 +121,7 @@ export const submitPurchaseOrders = (purchaseOrders) => {
                 dispatch(setPurchaseOrdersSubmitted('success'))
             else
                 dispatch(setPurchaseOrdersSubmitted('error'))
+            dispatch(getGames())
             return res.json()
         })
         .then(purchaseOrders => {
