@@ -41,6 +41,7 @@ export const getGames = (warning = false) => {
         fetch(`${API_ROOT}/games`)
             .then(res => res.json())
             .then(games => {
+                dispatch(setGames([]))
                 dispatch(setGames(games))
                 if (warning)
                     check(games)
