@@ -7,7 +7,7 @@ let initialState = {
     topFive: [],
     allVendors: [],
     purchaseOrders: [],
-    purchaseOrdersSubmitted: ''
+    purchaseOrdersSubmitted: null
 }
 
 const reducer = (prevState = initialState, action) => {

@@ -46,9 +46,7 @@ const Restock = (props) => {
             message = 'Submitting Purchase Order'
         }
         return (
-            <Alert variant={variant} onClose={() => {
-                setPurchaseOrdersSubmitted('')
-            }} dismissible>
+            purchaseOrdersSubmitted && <Alert variant={variant} onClose={() => setPurchaseOrdersSubmitted(null)} dismissible>
                 <Alert.Heading>{message}</Alert.Heading>
             </Alert>
         )
@@ -76,7 +74,7 @@ const Restock = (props) => {
                     })}
                 </tbody>
             </table>
-            {setPurchaseOrdersSubmitted && displayAlert()}
+            {displayAlert()}
             <button onClick={() => onClick()}>Restock</button>
         </div>
     )
