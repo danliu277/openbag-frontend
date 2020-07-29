@@ -2,27 +2,22 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { setUser } from '../action/actionCreator'
-import {withRouter} from 'react-router'
+import { withRouter } from 'react-router'
 
 const Navbar = (props) => {
     const { location } = props
 
     const checkPath = (path) => {
-        if(location && location.path === path)
+        if (location && location.path === path)
             return "nav-item active"
-        else 
+        else
             return "nav-item"
     }
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <Link className="navbar-brand" to="/main">Open Bag</Link>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-            </button>
-
-            <div className="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
-                <ul className="navbar-nav mr-auto d-flex justify-content-end">
+        <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+            <div className="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+                <ul className="navbar-nav mr-auto">
                     <li className={checkPath('/inventory')}>
                         <Link className="nav-link" to="/inventory">Inventory</Link>
                     </li>
@@ -38,7 +33,17 @@ const Navbar = (props) => {
                     <li className={checkPath('/restock')}>
                         <Link className="nav-link" to="/restock">Purchase Stock</Link>
                     </li>
-                    <li className="nav-item">
+                </ul>
+            </div>
+            <div className="mx-auto order-0">
+                <a className="navbar-brand mx-auto" href="/inventory">Open Bag</a>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                <ul className="navbar-nav ml-auto">
+                    <li className="nav-item ">
                         <Link className="nav-link" to='#' onClick={props.logout}>Log Out</Link>
                     </li>
                 </ul>
