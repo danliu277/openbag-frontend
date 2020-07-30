@@ -49,3 +49,22 @@
 .game-quantity {
   width: 3rem;
 }
+
+.login-background {
+  background: url('https://www.da-files.com/artnetwork/zeitgeist/top-5-dragons/img-01.jpg') no-repeat center;
+  height: 100vh;
+  width: 100vw;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}

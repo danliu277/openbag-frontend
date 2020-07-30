@@ -13,8 +13,8 @@ const Login = (props) => {
     }
 
     return (
-        <div>
-            <form onSubmit={onSubmit}>
+        <div className="login-background">
+            <form onSubmit={onSubmit} className="login">
                 <input type="text" placeholder="Username"
                     name="username"
                     value={username}
