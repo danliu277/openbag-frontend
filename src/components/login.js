@@ -15,6 +15,7 @@ const Login = (props) => {
     return (
         <div className="login-background">
             <form onSubmit={onSubmit} className="login">
+                <h1 className="title">Open Bag</h1>
                 <input type="text" placeholder="Username"
                     name="username"
                     value={username}
