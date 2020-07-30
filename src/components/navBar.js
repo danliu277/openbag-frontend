@@ -16,6 +16,12 @@ const Navbar = (props) => {
 
     return (
         <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+            <div className="mx-auto order-0">
+                <a className="navbar-brand mx-auto" href="/inventory">Open Bag</a>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+            </div>
             <div className="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
                 <ul className="navbar-nav mr-auto">
                     <li className={checkPath('/inventory')}>
@@ -34,12 +40,6 @@ const Navbar = (props) => {
                         <Link className="nav-link" to="/restock">Purchase Stock</Link>
                     </li>
                 </ul>
-            </div>
-            <div className="mx-auto order-0">
-                <a className="navbar-brand mx-auto" href="/inventory">Open Bag</a>
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
             </div>
             <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
                 <ul className="navbar-nav ml-auto">
