@@ -35,7 +35,7 @@ const  AllSales = (props) => {
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
+                        <td><b>Total:</b></td>
                         <td>${
                             props.sales.reduce((accumulator,sale) => {
                                 return (sale.quantity * sale.game.sales_price) + accumulator

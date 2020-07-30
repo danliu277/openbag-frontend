@@ -36,7 +36,7 @@ const CreateSales = (props) => {
             <form onSubmit={onSubmit}>
                 <h5>
                     Search Customer
-                    </h5>
+                </h5>
                 <div id="myDropdown" className="dropdown-content">
                     <input type="text" placeholder="Customer" className="customer-input"
                         name="customer"
