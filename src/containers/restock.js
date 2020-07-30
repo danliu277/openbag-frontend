@@ -72,6 +72,23 @@ const Restock = (props) => {
                     {games.map((game, index) => {
                         return <StockGame key={game.id} game={game} index={index} />
                     })}
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col">Total:</th>
+                        <th scope="col">$ {
+                            purchaseOrders.reduce((accumulator, po=0) => {
+                                if (po.quantity > 0) {
+                                    return (po.quantity * games.find(game => game.id === po.game_id).vendor_cost) + accumulator
+                                }
+                                return accumulator
+                            }, 0)
+                        }</th>
+                        <th scope="col"></th>
+                    </tr>
                 </tbody>
             </table>
             {displayAlert()}
